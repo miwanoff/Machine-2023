@@ -24,9 +24,18 @@ Machine.prototype.onReady = function () {
     clearTimeout(this.timer);
     document.write("Готово! ");
     this.state = "stopped";
-    document.write(this.state);
-  
+    document.write(this.state);  
+}
+
+Machine.prototype.stop = function () {
+    clearInterval(this.interval);
+    clearTimeout(this.timer);
+    document.write("Примусове вимикання! ");
+    this.state = "stopped";
+    document.write(this.state);  
 }
 
 let machine = new Machine();
 machine.run();
+
+//machine.stop();
