@@ -20,22 +20,48 @@ Machine.prototype.run = function () {
 };
 
 Machine.prototype.onReady = function () {
-    clearInterval(this.interval);
-    clearTimeout(this.timer);
-    document.write("Готово! ");
-    this.state = "stopped";
-    document.write(this.state);  
-}
+  clearInterval(this.interval);
+  clearTimeout(this.timer);
+  document.write("Готово! ");
+  this.state = "stopped";
+  document.write(this.state);
+};
 
 Machine.prototype.stop = function () {
-    clearInterval(this.interval);
-    clearTimeout(this.timer);
-    document.write("Примусове вимикання! ");
-    this.state = "stopped";
-    document.write(this.state);  
-}
+  clearInterval(this.interval);
+  clearTimeout(this.timer);
+  document.write("Примусове вимикання! ");
+  this.state = "stopped";
+  document.write(this.state);
+};
 
-let machine = new Machine();
-machine.run();
+// let machine = new Machine();
+// machine.run();
 
 //machine.stop();
+
+// CoffeeMachine
+
+function CoffeeMachine() {
+  this.drink = "вода";
+  Machine.apply(this);
+}
+
+CoffeeMachine.prototype = Object.create(Machine.prototype);
+CoffeeMachine.prototype.constructor = CoffeeMachine;
+
+CoffeeMachine.prototype.run = function (drink) {
+  if (drink != undefined) this.drink = drink;
+  document.write("Приготування - " + this.drink + " ");
+  if (this.drink == "латте") {
+    this.time = 5000;
+  }
+  if (this.drink == "espresso") {
+    this.time = 3000;
+  }
+  Machine.prototype.run.apply(this);
+};
+
+let coffeeMachine = new CoffeeMachine();
+
+coffeeMachine.run("espresso");
