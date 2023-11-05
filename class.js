@@ -1,6 +1,6 @@
 "use strict";
 class Machine {
-  constructor(name) {
+  constructor() {
     this.state = "stopped";
     this.time = 2000;
     this.timer = null;
@@ -35,5 +35,33 @@ class Machine {
   }
 }
 
-let machine = new Machine();
-machine.run();
+// let machine = new Machine();
+// machine.run();
+
+class CoffeeMachine extends Machine {
+  constructor() {
+    super();
+    // вызов конструктора родительского класса Machine
+    this.drink = "вода";
+
+  }
+  run(drink) {
+    if (drink != undefined) this.drink = drink;
+    document.write("Приготування - " + this.drink + " ");
+    if (this.drink == "латте") {
+      this.time = 5000;
+    }
+    if (this.drink == "espresso") {
+      this.time = 3000;
+    }
+
+    // вызов метода родительского класса run()
+    super.run();
+  }
+}
+
+let coffeeMachine = new CoffeeMachine();
+
+coffeeMachine.run("латте");
+
+//coffeeMachine.stop();
