@@ -64,4 +64,6 @@ CoffeeMachine.prototype.run = function (drink) {
 
 let coffeeMachine = new CoffeeMachine();
 
-coffeeMachine.run("espresso");
+coffeeMachine.run("латте");
+
+//coffeeMachine.stop();
